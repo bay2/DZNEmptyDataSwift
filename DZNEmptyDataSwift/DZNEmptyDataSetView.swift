@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DZNEmptyDataSetView: UIView {
+internal class DZNEmptyDataSetView: UIView {
     
     //MARK: - 属性
     var verticalOffset: CGFloat = 0

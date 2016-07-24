@@ -8,22 +8,19 @@
 
 import UIKit
 
-let DZNSwizzleInfoOwnerKey    = "owner"
-let DZNSwizzleInfoSelectorKey = "selector"
-let DZNSwizzleInfoPointerKey  = "pointer"
+internal let DZNSwizzleInfoOwnerKey    = "owner"
+internal let DZNSwizzleInfoSelectorKey = "selector"
+internal let DZNSwizzleInfoPointerKey  = "pointer"
+
+internal let kEmptyImageViewAnimationKey = "com.dzn.emptyDataSet.imageViewAnimation"
 
 
-let kEmptyImageViewAnimationKey = "com.dzn.emptyDataSet.imageViewAnimation"
-
-
-struct Static {
+internal struct Static {
     static var isSwizzleEndUpdates = false
     static var isSwizzleReloadData = false
 }
 
-extension UIScrollView {
-    
-    
+internal extension UIScrollView {
     
     func swizzleReloadData() {
         

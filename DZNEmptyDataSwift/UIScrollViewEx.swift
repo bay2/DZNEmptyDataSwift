@@ -8,12 +8,16 @@
 
 import UIKit
 
-var kEmptyDataSetSource = "emptyDataSetSource"
-var kEmptyDelegate      = "emptyDelegate"
-var kEmptyDataSetView   = "emptyDataSetView"
+internal var kEmptyDataSetSource = "emptyDataSetSource"
+internal var kEmptyDelegate      = "emptyDelegate"
+internal var kEmptyDataSetView   = "emptyDataSetView"
 
 extension UIScrollView: UIGestureRecognizerDelegate {
     
+    
+    /** 
+    空数据显现数据代理对象
+    */
     @IBOutlet weak public var dzn_emptyDataSource: EmptyDataSource?  {
         get {
             return objc_getAssociatedObject(self, &kEmptyDataSetSource) as? EmptyDataSource
@@ -31,6 +35,9 @@ extension UIScrollView: UIGestureRecognizerDelegate {
         }
     }
     
+    /**
+     空数据显现代理对象
+     */
     @IBOutlet weak public var dzn_emptyDelegate: EmptyDelegate? {
         
         get {
@@ -48,11 +55,14 @@ extension UIScrollView: UIGestureRecognizerDelegate {
         
     }
     
+}
+
+internal extension UIScrollView {
     
     var emptyView: DZNEmptyDataSetView? {
         
         get {
-
+            
             if let view = objc_getAssociatedObject(self, &kEmptyDataSetView) as? DZNEmptyDataSetView {
                 return view
             }
@@ -75,12 +85,6 @@ extension UIScrollView: UIGestureRecognizerDelegate {
         }
         
     }
-    
-
-    
-}
-
-public extension UIScrollView {
     
     /// item个数
     var dzn_itemsCount: Int {

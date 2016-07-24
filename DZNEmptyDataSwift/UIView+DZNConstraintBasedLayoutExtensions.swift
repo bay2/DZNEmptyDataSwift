@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIView {
+internal extension UIView {
     
     func equallyRelatedConstraintWithView(view: UIView, attribute: NSLayoutAttribute) -> NSLayoutConstraint {
 

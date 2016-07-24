@@ -8,8 +8,10 @@
 
 import UIKit
 
+/**
+ 空数据数据代理
+ */
 @objc public protocol EmptyDataSource: NSObjectProtocol {
-    
     
     /**
      配置空数据时显示的主标题
@@ -148,6 +150,9 @@ import UIKit
     
 }
 
+/**
+ 空数据代理
+ */
 @objc public protocol EmptyDelegate: NSObjectProtocol {
     
     /**

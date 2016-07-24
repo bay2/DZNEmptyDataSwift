@@ -8,9 +8,9 @@
 
 import UIKit
 
-extension UIButton {
+internal extension UIButton {
     
-    public func setImage(_ image: UIImage?) {
+    func setImage(_ image: UIImage?) {
         self.setImage(image, for: .normal)
     }
     

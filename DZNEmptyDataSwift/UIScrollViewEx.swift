@@ -111,6 +111,7 @@ internal extension UIScrollView {
             return items
         }
         
+        
         if self.isKind(of: UITableView.classForCoder()) {
             
             guard let tableView = self as? UITableView else {
@@ -202,13 +203,13 @@ internal extension UIScrollView {
     }
     
     
-    func dzn_didTapDataButton(sender: UIButton) {
+    func dzn_didTapDataButton(_ sender: UIButton) {
         
         self.dzn_emptyDelegate?.didTap?(emptyView: self, view: sender)
         
     }
     
-    func dzn_didTapContentView(sender: UITapGestureRecognizer) {
+    func dzn_didTapContentView(_ sender: UITapGestureRecognizer) {
         
         guard let view = sender.view else {
             return

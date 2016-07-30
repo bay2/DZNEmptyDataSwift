@@ -30,11 +30,11 @@ internal extension UIScrollView {
         
         
         if self.isKind(of: UITableView.classForCoder()) {
-            swizzleMethod(originalSelector: #selector(UITableView.reloadData), swizzledSelector: #selector(UIScrollView.dzn_reloadData))
+            swizzleMethod(#selector(UITableView.reloadData), swizzledSelector: #selector(UIScrollView.dzn_reloadData))
         }
         
         if self.isKind(of: UICollectionView.classForCoder()) {
-            swizzleMethod(originalSelector: #selector(UICollectionView.reloadData), swizzledSelector: #selector(UIScrollView.dzn_reloadData))
+            swizzleMethod(#selector(UICollectionView.reloadData), swizzledSelector: #selector(UIScrollView.dzn_reloadData))
         }
         
         Static.isSwizzleReloadData = true
@@ -51,14 +51,14 @@ internal extension UIScrollView {
             return
         }
         
-        swizzleMethod(originalSelector: #selector(UITableView.endUpdates), swizzledSelector: #selector(UIScrollView.dzn_endUpdates))
+        swizzleMethod(#selector(UITableView.endUpdates), swizzledSelector: #selector(UIScrollView.dzn_endUpdates))
         
         Static.isSwizzleEndUpdates = true
         
         
     }
     
-    func swizzleMethod(originalSelector: Selector, swizzledSelector: Selector) {
+    func swizzleMethod(_ originalSelector: Selector, swizzledSelector: Selector) {
         
         let originalMethod = class_getInstanceMethod(self.classForCoder, originalSelector)
         let swizzledMethod = class_getInstanceMethod(self.classForCoder, swizzledSelector)

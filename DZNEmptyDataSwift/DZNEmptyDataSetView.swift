@@ -158,9 +158,9 @@ internal class DZNEmptyDataSetView: UIView {
     
     //MARK: - Action Methods
     
-    func didTapButton(button: UIButton) {
+    func didTapButton(_ button: UIButton) {
         
-        let selector = #selector(UIScrollView.dzn_didTapDataButton(sender:))
+        let selector = #selector(UIScrollView.dzn_didTapDataButton)
         
         guard let _ = self.superview?.responds(to: selector) else {
             return
@@ -177,8 +177,8 @@ internal class DZNEmptyDataSetView: UIView {
     */
     func setupConstraints() {
         
-        let centerXConstraint = self.equallyRelatedConstraintWithView(view: self.contentView, attribute: .centerX);
-        let centerYConstraint = self.equallyRelatedConstraintWithView(view: self.contentView, attribute: .centerY);
+        let centerXConstraint = self.equallyRelatedConstraintWithView(self.contentView, attribute: .centerX);
+        let centerYConstraint = self.equallyRelatedConstraintWithView(self.contentView, attribute: .centerY);
         
         self.addConstraint(centerXConstraint)
         self.addConstraint(centerYConstraint)
@@ -208,7 +208,7 @@ internal class DZNEmptyDataSetView: UIView {
                 subviewStrings.append("imageView")
                 views["imageView"] = imageView
                 
-                self.contentView.addConstraint(self.contentView.equallyRelatedConstraintWithView(view: imageView, attribute: .centerX))
+                self.contentView.addConstraint(self.contentView.equallyRelatedConstraintWithView(imageView, attribute: .centerX))
                 
             }
             

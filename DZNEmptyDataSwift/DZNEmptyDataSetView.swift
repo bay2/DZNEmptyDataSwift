@@ -21,7 +21,7 @@ internal class DZNEmptyDataSetView: UIView {
         
         let newView = UIView()
         newView.translatesAutoresizingMaskIntoConstraints = false
-        newView.backgroundColor = UIColor.clear()
+        newView.backgroundColor = UIColor.clear
         newView.isUserInteractionEnabled = true
         newView.alpha = 0
         
@@ -54,7 +54,7 @@ internal class DZNEmptyDataSetView: UIView {
         let newImageView = UIImageView()
        
         newImageView.translatesAutoresizingMaskIntoConstraints = false
-        newImageView.backgroundColor = UIColor.clear()
+        newImageView.backgroundColor = UIColor.clear
         newImageView.contentMode = .scaleAspectFit
         newImageView.isUserInteractionEnabled = false
         newImageView.accessibilityIdentifier = "empty set background image"
@@ -195,7 +195,7 @@ internal class DZNEmptyDataSetView: UIView {
             
         } else {
             
-            let width = self.frame.width != 0 ? self.frame.width : UIScreen.main().bounds.width
+            let width = self.frame.width != 0 ? self.frame.width : UIScreen.main.bounds.width
             let padding = roundf(Float(width)/16)
             let verticalSpace = self.verticalSpace != 0 ? self.verticalSpace : 11.0
             
@@ -297,14 +297,14 @@ internal class DZNEmptyDataSetView: UIView {
      可以显示标题
      */
     func canShowTitle() -> Bool {
-        return (self.titleLable.attributedText?.length > 0 && self.titleLable.superview != nil)
+        return (self.titleLable.attributedText?.length ?? 0 > 0 && self.titleLable.superview != nil)
     }
     
     /**
      可以显示副标题
      */
     func canShowDetail() -> Bool {
-        return (self.detailLabel.attributedText?.length > 0 && self.detailLabel.superview != nil)
+        return (self.detailLabel.attributedText?.length ?? 0 > 0 && self.detailLabel.superview != nil)
     }
     
     
@@ -313,7 +313,7 @@ internal class DZNEmptyDataSetView: UIView {
     */
     func canShowButton() -> Bool {
         
-        if self.button.attributedTitle(for: .normal)?.string.lengthOfBytes(using: .unicode) > 0 ||
+        if self.button.attributedTitle(for: .normal)?.string.lengthOfBytes(using: .unicode) ?? 0 > 0 ||
         self.button.image(for: .normal) != nil {
             return (self.button.superview != nil)
         }

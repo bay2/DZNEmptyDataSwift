@@ -21,7 +21,7 @@ import UIKit
      - Returns: 主标题
      
      */
-    @objc optional func title(emptyView scrollView: UIScrollView) -> AttributedString?
+    @objc optional func title(emptyView scrollView: UIScrollView) -> NSAttributedString?
     
     /**
      配置空数据时显示的副标题（描述）
@@ -31,7 +31,7 @@ import UIKit
      - Returns: 副标题（描述）
      
      */
-    @objc optional func description(emptyView scrollView: UIScrollView) -> AttributedString?
+    @objc optional func description(emptyView scrollView: UIScrollView) -> NSAttributedString?
     
     /**
      配置空数据时显示的图片
@@ -72,7 +72,7 @@ import UIKit
      - Returns: 按钮标题
      
      */
-    @objc optional func buttonTitle(emptyView scrollView: UIScrollView, state: UIControlState) -> AttributedString?
+    @objc optional func buttonTitle(emptyView scrollView: UIScrollView, state: UIControlState) -> NSAttributedString?
     
     /**
      配置空数据时显示的按钮图片

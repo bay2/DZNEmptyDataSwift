@@ -107,7 +107,7 @@ extension ApplicationType {
         
     }
     
-    var emptyDescription: AttributedString? {
+    var emptyDescription: NSAttributedString? {
         
         get {
             
@@ -265,7 +265,7 @@ extension ApplicationType {
     }
     
     
-    var emptyTitle: AttributedString? {
+    var emptyTitle: NSAttributedString? {
         
         get {
             
@@ -302,7 +302,7 @@ extension ApplicationType {
                 textColor = #colorLiteral(red: 0.6745098039, green: 0.6862745098, blue: 0.7411764706, alpha: 1)
                 
                 let shadow = NSShadow()
-                shadow.shadowColor = UIColor.white()
+                shadow.shadowColor = UIColor.white
                 shadow.shadowOffset = CGSize(width: 0, height: 1)
                 attributes[NSShadowAttributeName] = shadow
                 
@@ -327,12 +327,12 @@ extension ApplicationType {
                 text = "Activity empty"
                 font = UIFont.boldSystemFont(ofSize: 16)
                 textColor = #colorLiteral(red: 0.5098039216, green: 0.5215686275, blue: 0.5294117647, alpha: 1)
-                attributes[NSKernAttributeName] = -0.1
+                attributes[NSKernAttributeName] = -0.1 as AnyObject?
                 
             case .path:
                 text = "Message Your Friends"
                 font = UIFont.boldSystemFont(ofSize: 14)
-                textColor = UIColor.white()
+                textColor = UIColor.white
                 
             case .pinterest:
                 text = "No boards to display"
@@ -374,7 +374,7 @@ extension ApplicationType {
                 text = "Welcome to VMs"
                 font = UIFont.boldSystemFont(ofSize: 22)
                 textColor = #colorLiteral(red: 0.3490196078, green: 0.3490196078, blue: 0.3490196078, alpha: 1)
-                attributes[NSKernAttributeName] = 0.45
+                attributes[NSKernAttributeName] = 0.45 as AnyObject?
                 
             case .whatsapp:
                 text = "No Media"
@@ -402,7 +402,7 @@ extension ApplicationType {
                 attributes[NSForegroundColorAttributeName] = newTextColor
             }
             
-            return AttributedString(string: newText, attributes: attributes)
+            return NSAttributedString(string: newText, attributes: attributes)
             
         }
         
@@ -414,10 +414,10 @@ extension ApplicationType {
             
             switch self {
             case ._500px:
-                return UIColor.black()
+                return UIColor.black
                 
             case .instagram, .slack, .videos:
-                return UIColor.white()
+                return UIColor.white
                 
             case .dropbox:
                 return #colorLiteral(red: 0.9411764706, green: 0.9529411765, blue: 0.9607843137, alpha: 1)
@@ -506,7 +506,7 @@ extension ApplicationType {
         
     }
     
-    func emptyButtonTitle(_ state: UIControlState) -> AttributedString? {
+    func emptyButtonTitle(_ state: UIControlState) -> NSAttributedString? {
         
         var text: String? = nil
         var font: UIFont? = nil
@@ -541,7 +541,7 @@ extension ApplicationType {
         case .kickstarter:
             text = "Discover projects"
             font = UIFont.boldSystemFont(ofSize: 14)
-            textColor = UIColor.white()
+            textColor = UIColor.white
             
         case .WWDC:
             text = "Sign In"
@@ -565,7 +565,7 @@ extension ApplicationType {
             attributes[NSForegroundColorAttributeName] = newTextColor
         }
         
-        return AttributedString(string: newText, attributes: attributes)
+        return NSAttributedString(string: newText, attributes: attributes)
         
     }
     
@@ -609,7 +609,7 @@ class DetailViewController: UITableViewController, EmptyDelegate, EmptyDataSourc
         self.navigationController?.navigationBar.barTintColor = application.type.navigationBarStyle.barColor
         self.navigationController?.navigationBar.tintColor = application.type.navigationBarStyle.tintColor
         
-        UIApplication.shared().setStatusBarStyle(application.type.navigationBarStyle.barstyle, animated: true)
+        UIApplication.shared.setStatusBarStyle(application.type.navigationBarStyle.barstyle, animated: true)
         
         if let logo = UIImage(named: "logo_\(self.application.displayName.lowercased())") {
             self.navigationItem.titleView = UIImageView(image: logo)
@@ -644,11 +644,11 @@ class DetailViewController: UITableViewController, EmptyDelegate, EmptyDataSourc
     }
     
     // MARK: - EmptyDataSource
-    func description(emptyView scrollView: UIScrollView) -> AttributedString? {
+    func description(emptyView scrollView: UIScrollView) -> NSAttributedString? {
         return self.application.type.emptyDescription
     }
     
-    func title(emptyView scrollView: UIScrollView) -> AttributedString? {
+    internal func title(emptyView scrollView: UIScrollView) -> NSAttributedString? {
         return self.application.type.emptyTitle
     }
     
@@ -665,7 +665,7 @@ class DetailViewController: UITableViewController, EmptyDelegate, EmptyDataSourc
     func verticalOffset(emptyView scrollView: UIScrollView) -> CGFloat {
         
         if self.application.type == .kickstarter {
-            return UIApplication.shared().statusBarFrame.height + (self.navigationController?.navigationBar.frame.height ?? 0)
+            return UIApplication.shared.statusBarFrame.height + (self.navigationController?.navigationBar.frame.height ?? 0)
         }
         
         if self.application.type == .twitter {
@@ -680,7 +680,7 @@ class DetailViewController: UITableViewController, EmptyDelegate, EmptyDataSourc
         return self.application.type.emptySpaceHeight
     }
     
-    func buttonTitle(emptyView scrollView: UIScrollView, state: UIControlState) -> AttributedString? {
+    internal func buttonTitle(emptyView scrollView: UIScrollView, state: UIControlState) -> NSAttributedString? {
         return application.type.emptyButtonTitle(state)
     }
     
@@ -697,7 +697,7 @@ class DetailViewController: UITableViewController, EmptyDelegate, EmptyDataSourc
         }
         
         var capInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        var rectInsets = UIEdgeInsetsZero
+        var rectInsets = UIEdgeInsets.zero
         
         switch self.application.type {
         case .foursquare:

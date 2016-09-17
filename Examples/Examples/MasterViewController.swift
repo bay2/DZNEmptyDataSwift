@@ -22,7 +22,7 @@ class MasterViewController: UITableViewController, EmptyDataSource, EmptyDelegat
             
             let searchBar = self.searchController.searchBar
             
-            if searchBar.isFirstResponder() && searchBar.text?.lengthOfBytes(using: .unicode) > 0 {
+            if searchBar.isFirstResponder && searchBar.text?.lengthOfBytes(using: .unicode) ?? 0 > 0 {
                 
                 return self.applications.filter { (value) -> Bool in
                     value.displayName.contains(searchBar.text ?? "")
@@ -72,7 +72,7 @@ class MasterViewController: UITableViewController, EmptyDataSource, EmptyDelegat
         self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.9725490196, green: 0.9725490196, blue: 0.9725490196, alpha: 1)
         self.navigationController?.navigationBar.isTranslucent = false
         
-        UIApplication.shared().setStatusBarStyle(.default, animated: true)
+        UIApplication.shared.setStatusBarStyle(.default, animated: true)
         
     }
 
@@ -85,7 +85,7 @@ class MasterViewController: UITableViewController, EmptyDataSource, EmptyDelegat
     
     func serializeApplications() {
         
-        guard let path = Bundle.main.pathForResource("applications", ofType: "json") else {
+        guard let path = Bundle.main.path(forResource: "applications", ofType: "json") else {
             return
         }
         
@@ -140,7 +140,7 @@ class MasterViewController: UITableViewController, EmptyDataSource, EmptyDelegat
         cell.imageView?.layer.borderColor = UIColor(white: 0, alpha: 0.2).cgColor
         cell.imageView?.layer.borderWidth = 0.5
         cell.imageView?.layer.shouldRasterize = true
-        cell.imageView?.layer.rasterizationScale = UIScreen.main().scale
+        cell.imageView?.layer.rasterizationScale = UIScreen.main.scale
         
         return cell
     }

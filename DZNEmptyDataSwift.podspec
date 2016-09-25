@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "DZNEmptyDataSwift"
-  s.version      = "0.0.2"
+  s.version      = "0.2.0"
   s.summary      = "这是一个用于UITableView&UICollectionView空数据时，设置显示空数据提示。swift版本的DZNEmptyDataSet。"
   s.description  = "这个库只需要简单的配置，就能自动的在空数据时加载加配置的视图显示。"
   s.homepage     = "https://github.com/bay2/DZNEmptyDataSwift"

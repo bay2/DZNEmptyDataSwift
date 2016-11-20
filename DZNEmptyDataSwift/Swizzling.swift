@@ -121,9 +121,13 @@ internal extension UIScrollView {
             
             view.prepareForReuse();
             
-            if let customView = dzn_emptyDataSource?.customView?(emptyView: self) {
+            let customView = dzn_emptyDataSource?.customView?(emptyView: self) ?? self.userCostomEmptyView
+            
+            if let customView = customView {
                 
                 view.customView = customView
+                
+                view.setupConstraints()
                 
             } else {
                 
@@ -160,39 +164,41 @@ internal extension UIScrollView {
                 view.button.setBackgroundImage(dzn_emptyDataSource?.buttonBackgroundImage?(emptyView: self, forState: .highlighted), for: .highlighted)
                 
                 
-                view.verticalOffset = dzn_emptyDataSource?.verticalOffset?(emptyView: self) ?? 0
                 
-                view.backgroundColor = dzn_emptyDataSource?.backgroundColor?(emptyView: self)
-                view.isHidden = false
-                view.clipsToBounds = false
-                
-                // 配置可被点击
-                view.isUserInteractionEnabled = dzn_emptyDelegate?.shouldAllowTouch?(emptyView: self) ?? true
-                
-                view.fadeInOnDisplay = dzn_emptyDelegate?.shouldFadeIn?(emptyView: self) ?? true
-                
-                view.setupConstraints()
-                
-                UIView.performWithoutAnimation {
-                    view.layoutIfNeeded()
-                }
-                
-                isScrollEnabled = dzn_emptyDelegate?.shouldAllowScroll?(emptyView: self) ?? true
-                
-                if dzn_emptyDelegate?.shouldAnimateImageView?(emptyView: self) ?? false {
-                    
-                    if let animation = dzn_emptyDataSource?.imageAnimation?(emptyView: self) {
-                        emptyView?.imageView.layer.add(animation, forKey: kEmptyImageViewAnimationKey)
-                    }
-                    
-                } else if let _ = emptyView?.imageView.layer.animation(forKey: kEmptyImageViewAnimationKey) {
-                    emptyView?.imageView.layer.removeAnimation(forKey: kEmptyImageViewAnimationKey)
-                }
-                
-                
-                dzn_emptyDelegate?.didAppear?(emptyView: self)
                 
             }
+            
+            view.verticalOffset = dzn_emptyDataSource?.verticalOffset?(emptyView: self) ?? 0
+            
+            view.backgroundColor = dzn_emptyDataSource?.backgroundColor?(emptyView: self)
+            view.isHidden = false
+            view.clipsToBounds = false
+            
+            // 配置可被点击
+            view.isUserInteractionEnabled = dzn_emptyDelegate?.shouldAllowTouch?(emptyView: self) ?? true
+            
+            view.fadeInOnDisplay = dzn_emptyDelegate?.shouldFadeIn?(emptyView: self) ?? true
+            
+            view.setupConstraints()
+            
+            UIView.performWithoutAnimation {
+                view.layoutIfNeeded()
+            }
+            
+            isScrollEnabled = dzn_emptyDelegate?.shouldAllowScroll?(emptyView: self) ?? true
+            
+            if dzn_emptyDelegate?.shouldAnimateImageView?(emptyView: self) ?? false {
+                
+                if let animation = dzn_emptyDataSource?.imageAnimation?(emptyView: self) {
+                    emptyView?.imageView.layer.add(animation, forKey: kEmptyImageViewAnimationKey)
+                }
+                
+            } else if let _ = emptyView?.imageView.layer.animation(forKey: kEmptyImageViewAnimationKey) {
+                emptyView?.imageView.layer.removeAnimation(forKey: kEmptyImageViewAnimationKey)
+            }
+            
+            
+            dzn_emptyDelegate?.didAppear?(emptyView: self)
             
         } else if emptyView?.isHidden ?? false {
             dzn_invalidate()

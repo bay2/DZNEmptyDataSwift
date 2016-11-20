@@ -31,19 +31,30 @@ internal class DZNEmptyDataSetView: UIView {
     
     var customView: UIView? {
         
-        didSet(view) {
+        willSet(view) {
             
-            guard let newView = view else {
+            guard let _ = view else {
                 return
             }
             
-            customView = newView
+            self.customView?.removeFromSuperview()
             
-            newView.removeFromSuperview()
             
-            newView.translatesAutoresizingMaskIntoConstraints = false
             
-            self.contentView.addSubview(newView)
+            
+        }
+        
+        didSet (view) {
+            
+            if let newView = self.customView {
+                
+                newView.translatesAutoresizingMaskIntoConstraints = false
+                
+                self.contentView.addSubview(newView)
+                
+            }
+            
+            
             
         }
         
@@ -190,8 +201,8 @@ internal class DZNEmptyDataSetView: UIView {
         
         if let newCustomView = customView {
             
-            self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[customView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["customView": newCustomView]))
-            self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[customView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["customView": newCustomView]))
+            self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[customView]|", options: NSLayoutFormatOptions(rawValue: UInt(0)), metrics: nil, views: ["customView": newCustomView]))
+            self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[customView]|", options: NSLayoutFormatOptions(rawValue: UInt(0)), metrics: nil, views: ["customView": newCustomView]))
             
         } else {
             

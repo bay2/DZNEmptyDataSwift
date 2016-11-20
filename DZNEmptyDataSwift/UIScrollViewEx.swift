@@ -67,6 +67,17 @@ extension UIScrollView {
         
     }
     
+    @IBOutlet public var userCostomEmptyView: UIView? {
+        
+        get {
+            return objc_getAssociatedObject(self, &kEmptyImage) as? UIView
+        }
+        set(newValue) {
+            objc_setAssociatedObject(self, &kEmptyImage, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+        
+    }
+    
 }
 
 extension UIScrollView: UIGestureRecognizerDelegate {

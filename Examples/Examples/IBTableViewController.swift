@@ -40,6 +40,18 @@ class IBTableViewController: UITableViewController, EmptyDelegate, EmptyDataSour
         // #warning Incomplete implementation, return the number of rows
         return 0
     }
+    
+//    func customView(emptyView scrollView: UIScrollView) -> UIView? {
+//        
+//        let myView = UIView()
+//        
+//        myView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+//        
+//        myView.backgroundColor = UIColor.red
+//        
+//        return myView
+//        
+//    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -11,8 +11,9 @@ import UIKit
 internal var kEmptyDataSetSource = "emptyDataSetSource"
 internal var kEmptyDelegate      = "emptyDelegate"
 internal var kEmptyDataSetView   = "emptyDataSetView"
+internal var kEmptyImage         = "emptyImage"
 
-extension UIScrollView: UIGestureRecognizerDelegate {
+extension UIScrollView {
     
     
     /** 
@@ -46,7 +47,7 @@ extension UIScrollView: UIGestureRecognizerDelegate {
         set(newValue) {
             
             if newValue != nil {
-                self.dzn_invalidate()
+                dzn_invalidate()
             }
             
             objc_setAssociatedObject(self, &kEmptyDelegate, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
@@ -55,9 +56,20 @@ extension UIScrollView: UIGestureRecognizerDelegate {
         
     }
     
+    @IBInspectable public var emptyImage: UIImage? {
+        
+        get {
+            return objc_getAssociatedObject(self, &kEmptyImage) as? UIImage
+        }
+        set(newValue) {
+            objc_setAssociatedObject(self, &kEmptyImage, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+        
+    }
+    
 }
 
-internal extension UIScrollView {
+extension UIScrollView: UIGestureRecognizerDelegate {
     
     var emptyView: DZNEmptyDataSetView? {
         
@@ -107,12 +119,11 @@ internal extension UIScrollView {
         
         var items = 0
         
-        if !self.responds(to: #selector(getter: UITableView.dataSource)) {
-            return items
-        }
-        
-        
-        if self.isKind(of: UITableView.classForCoder()) {
+        if self is UITableView {
+            
+            if !responds(to: #selector(getter: UITableView.dataSource)) {
+                return items
+            }
             
             guard let tableView = self as? UITableView else {
                 return items
@@ -127,7 +138,7 @@ internal extension UIScrollView {
             }
             
         }
-        
+
         return items
         
     }
@@ -140,23 +151,23 @@ internal extension UIScrollView {
         
         var items = 0
         
-        if !self.responds(to: #selector(getter: UICollectionView.dataSource)) {
-            return items
-        }
-        
-        guard self.isKind(of: UICollectionView.classForCoder()) else {
-            return items
-        }
-        
-        guard let collectionView = self as? UICollectionView else {
-            return items
-        }
-        
-        let sections = collectionView.dataSource?.numberOfSections?(in: collectionView) ?? 0
-        
-        for sectionsIndex in 0..<sections {
+        if self is UICollectionView {
             
-            items += collectionView.dataSource?.collectionView(collectionView, numberOfItemsInSection: sectionsIndex) ?? 0
+            if !responds(to: #selector(getter: UICollectionView.dataSource)) {
+                return items
+            }
+            
+            guard let collectionView = self as? UICollectionView else {
+                return items
+            }
+            
+            let sections = collectionView.dataSource?.numberOfSections?(in: collectionView) ?? 0
+            
+            for sectionsIndex in 0..<sections {
+                
+                items += collectionView.dataSource?.collectionView(collectionView, numberOfItemsInSection: sectionsIndex) ?? 0
+                
+            }
             
         }
         
@@ -169,14 +180,14 @@ internal extension UIScrollView {
     */
     func dzn_invalidate() {
         
-        self.dzn_emptyDelegate?.didAppear?(emptyView: self)
-        self.emptyView?.prepareForReuse()
-        self.emptyView?.removeFromSuperview()
-        self.emptyView = nil
+        dzn_emptyDelegate?.didAppear?(emptyView: self)
+        emptyView?.prepareForReuse()
+        emptyView?.removeFromSuperview()
+        emptyView = nil
         
-        self.isScrollEnabled = true
+        isScrollEnabled = true
         
-        self.dzn_emptyDelegate?.didDisappear?(emptyView: self)
+        dzn_emptyDelegate?.didDisappear?(emptyView: self)
         
         
     }
@@ -190,22 +201,21 @@ internal extension UIScrollView {
     */
     func dzn_canDisplay() -> Bool {
         
-        guard  let _ = self.dzn_emptyDataSource else {
+        guard let _ = dzn_emptyDataSource else {
             return false
         }
         
-        guard self.isKind(of: UITableView.classForCoder()) || self.isKind(of: UICollectionView.classForCoder()) else {
-            return false
-            
+        if self is UITableView || self is UICollectionView {
+            return true
         }
-
-        return true
+        
+        return false
     }
     
     
     func dzn_didTapDataButton(_ sender: UIButton) {
         
-        self.dzn_emptyDelegate?.didTap?(emptyView: self, view: sender)
+        dzn_emptyDelegate?.didTap?(emptyView: self, view: sender)
         
     }
     
@@ -215,7 +225,7 @@ internal extension UIScrollView {
             return
         }
         
-        self.dzn_emptyDelegate?.didTap?(emptyView: self, view: view)
+        dzn_emptyDelegate?.didTap?(emptyView: self, view: view)
     }
     
 }

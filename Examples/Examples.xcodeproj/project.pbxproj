@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		91279A041DE1CCE00068EEC1 /* IBTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91279A031DE1CCE00068EEC1 /* IBTableViewController.swift */; };
 		913491951D39B07A00C64978 /* applications.json in Resources */ = {isa = PBXBuildFile; fileRef = 913491941D39B07A00C64978 /* applications.json */; };
 		913491971D3A3D2600C64978 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913491961D3A3D2600C64978 /* Application.swift */; };
 		917E84871D4329B7002E55FB /* DZNEmptyDataSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917E847F1D4329B7002E55FB /* DZNEmptyDataSetView.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		91279A031DE1CCE00068EEC1 /* IBTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBTableViewController.swift; sourceTree = "<group>"; };
 		913491941D39B07A00C64978 /* applications.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = applications.json; sourceTree = "<group>"; };
 		913491961D3A3D2600C64978 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		917E847F1D4329B7002E55FB /* DZNEmptyDataSetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DZNEmptyDataSetView.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				91D7644F1D350CCC009C7C54 /* Assets.xcassets */,
 				91D764511D350CCC009C7C54 /* LaunchScreen.storyboard */,
 				91D764541D350CCC009C7C54 /* Info.plist */,
+				91279A031DE1CCE00068EEC1 /* IBTableViewController.swift */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				917E848D1D4329B7002E55FB /* UIView+DZNConstraintBasedLayoutExtensions.swift in Sources */,
 				913491971D3A3D2600C64978 /* Application.swift in Sources */,
 				917E84871D4329B7002E55FB /* DZNEmptyDataSetView.swift in Sources */,
+				91279A041DE1CCE00068EEC1 /* IBTableViewController.swift in Sources */,
 				917E848B1D4329B7002E55FB /* UIKitExtension.swift in Sources */,
 				91D7644B1D350CCC009C7C54 /* DetailViewController.swift in Sources */,
 				91D764491D350CCC009C7C54 /* MasterViewController.swift in Sources */,

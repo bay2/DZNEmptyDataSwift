@@ -119,7 +119,7 @@ internal class DZNEmptyDataSetView: UIView {
     override init(frame: CGRect = CGRect.zero) {
         super.init(frame: frame)
         
-        self.addSubview(self.contentView)
+        self.addSubview(contentView)
         
     }
 
@@ -131,27 +131,27 @@ internal class DZNEmptyDataSetView: UIView {
 
     override func didMoveToSuperview() {
         
-        self.frame = self.superview?.bounds ?? CGRect.zero
+        frame = superview?.bounds ?? CGRect.zero
         
-        if self.fadeInOnDisplay {
+        if fadeInOnDisplay {
             
             UIView.animate(withDuration: 0.25, animations: {
                 self.contentView.alpha = 1
                 }, completion: nil)
             
         } else {
-            self.contentView.alpha = 1
+            contentView.alpha = 1
         }
         
     }
     
     func prepareForReuse() {
         
-        _ = self.contentView.subviews.map {
+        _ = contentView.subviews.map {
             $0.removeFromSuperview()
         }
         
-        self.removeAllConstraints()
+        removeAllConstraints()
         
     }
     
@@ -162,11 +162,11 @@ internal class DZNEmptyDataSetView: UIView {
         
         let selector = #selector(UIScrollView.dzn_didTapDataButton)
         
-        guard let _ = self.superview?.responds(to: selector) else {
+        guard let _ = superview?.responds(to: selector) else {
             return
         }
         
-        self.superview?.perform(selector, with: button, afterDelay: 0)
+        superview?.perform(selector, with: button, afterDelay: 0)
         
     }
     
@@ -177,15 +177,15 @@ internal class DZNEmptyDataSetView: UIView {
     */
     func setupConstraints() {
         
-        let centerXConstraint = self.equallyRelatedConstraintWithView(self.contentView, attribute: .centerX);
-        let centerYConstraint = self.equallyRelatedConstraintWithView(self.contentView, attribute: .centerY);
+        let centerXConstraint = equallyRelatedConstraintWithView(contentView, attribute: .centerX);
+        let centerYConstraint = equallyRelatedConstraintWithView(contentView, attribute: .centerY);
         
-        self.addConstraint(centerXConstraint)
-        self.addConstraint(centerYConstraint)
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[contentView]|", options: NSLayoutFormatOptions(rawValue: UInt(0)), metrics: nil, views: ["contentView": self.contentView]))
+        addConstraint(centerXConstraint)
+        addConstraint(centerYConstraint)
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[contentView]|", options: NSLayoutFormatOptions(rawValue: UInt(0)), metrics: nil, views: ["contentView": self.contentView]))
         
-        if self.verticalOffset != 0 && self.constraints.count > 0 {
-            centerYConstraint.constant = self.verticalOffset
+        if verticalOffset != 0 && constraints.count > 0 {
+            centerYConstraint.constant = verticalOffset
         }
         
         if let newCustomView = customView {
@@ -195,7 +195,7 @@ internal class DZNEmptyDataSetView: UIView {
             
         } else {
             
-            let width = self.frame.width != 0 ? self.frame.width : UIScreen.main.bounds.width
+            let width = frame.width != 0 ? frame.width : UIScreen.main.bounds.width
             let padding = roundf(Float(width)/16)
             let verticalSpace = self.verticalSpace != 0 ? self.verticalSpace : 11.0
             
@@ -208,38 +208,38 @@ internal class DZNEmptyDataSetView: UIView {
                 subviewStrings.append("imageView")
                 views["imageView"] = imageView
                 
-                self.contentView.addConstraint(self.contentView.equallyRelatedConstraintWithView(imageView, attribute: .centerX))
+                contentView.addConstraint(contentView.equallyRelatedConstraintWithView(imageView, attribute: .centerX))
                 
             }
             
-            if self.canShowTitle() {
+            if canShowTitle() {
                 
                 subviewStrings.append("titleLabel")
-                views["titleLabel"] = self.titleLable
+                views["titleLabel"] = titleLable
                 
-                self.contentView.addConstraints(NSLayoutConstraint .constraints(withVisualFormat: "H:|-(padding@750)-[titleLabel(>=0)]-(padding@750)-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
+                contentView.addConstraints(NSLayoutConstraint .constraints(withVisualFormat: "H:|-(padding@750)-[titleLabel(>=0)]-(padding@750)-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
                 
             } else {
                 titleLable.removeFromSuperview()
             }
             
-            if self.canShowDetail() {
+            if canShowDetail() {
                 
                 subviewStrings.append("detailLabel")
                 views["detailLabel"] = detailLabel;
                 
-                self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(padding@750)-[detailLabel(>=0)]-(padding@750)-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
+                contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(padding@750)-[detailLabel(>=0)]-(padding@750)-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
                 
             } else {
                 detailLabel.removeFromSuperview()
             }
             
-            if (self.canShowButton()) {
+            if (canShowButton()) {
                 
                 subviewStrings.append("button");
                 views["button"] = button
                 
-                self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(padding@750)-[button(>=0)]-(padding@750)-|", options: NSLayoutFormatOptions(rawValue: UInt(0)), metrics: metrics, views: views))
+                contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(padding@750)-[button(>=0)]-(padding@750)-|", options: NSLayoutFormatOptions(rawValue: UInt(0)), metrics: metrics, views: views))
                 
             } else {
                 button.removeFromSuperview()
@@ -259,7 +259,7 @@ internal class DZNEmptyDataSetView: UIView {
             }
             
             if verticalFormat.lengthOfBytes(using: .ascii) > 0 {
-                self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|\(verticalFormat)|", options: NSLayoutFormatOptions(rawValue: UInt(0)), metrics: metrics, views: views))
+                contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|\(verticalFormat)|", options: NSLayoutFormatOptions(rawValue: UInt(0)), metrics: metrics, views: views))
             }
         }
         
@@ -275,7 +275,7 @@ internal class DZNEmptyDataSetView: UIView {
             return hitView
         }
         
-        if hitView.isEqual(self.contentView) || hitView.isEqual(customView) {
+        if hitView.isEqual(contentView) || hitView.isEqual(customView) {
             return hitView
         }
         
@@ -288,8 +288,8 @@ internal class DZNEmptyDataSetView: UIView {
      */
     func removeAllConstraints() {
         
-        self.removeConstraints(self.constraints)
-        contentView.removeConstraints(self.contentView.constraints)
+        removeConstraints(constraints)
+        contentView.removeConstraints(contentView.constraints)
         
     }
     
@@ -297,14 +297,14 @@ internal class DZNEmptyDataSetView: UIView {
      可以显示标题
      */
     func canShowTitle() -> Bool {
-        return (self.titleLable.attributedText?.length ?? 0 > 0 && self.titleLable.superview != nil)
+        return (titleLable.attributedText?.length ?? 0 > 0 && titleLable.superview != nil)
     }
     
     /**
      可以显示副标题
      */
     func canShowDetail() -> Bool {
-        return (self.detailLabel.attributedText?.length ?? 0 > 0 && self.detailLabel.superview != nil)
+        return (detailLabel.attributedText?.length ?? 0 > 0 && detailLabel.superview != nil)
     }
     
     
@@ -313,9 +313,9 @@ internal class DZNEmptyDataSetView: UIView {
     */
     func canShowButton() -> Bool {
         
-        if self.button.attributedTitle(for: .normal)?.string.lengthOfBytes(using: .unicode) ?? 0 > 0 ||
-        self.button.image(for: .normal) != nil {
-            return (self.button.superview != nil)
+        if button.attributedTitle(for: .normal)?.string.lengthOfBytes(using: .unicode) ?? 0 > 0 ||
+        button.image(for: .normal) != nil {
+            return (button.superview != nil)
         }
         
         return false

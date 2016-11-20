@@ -29,11 +29,11 @@ internal extension UIScrollView {
         }
         
         
-        if self.isKind(of: UITableView.classForCoder()) {
+        if self is UITableView {
             swizzleMethod(#selector(UITableView.reloadData), swizzledSelector: #selector(UIScrollView.dzn_reloadData))
         }
         
-        if self.isKind(of: UICollectionView.classForCoder()) {
+        if self is UICollectionView {
             swizzleMethod(#selector(UICollectionView.reloadData), swizzledSelector: #selector(UIScrollView.dzn_reloadData))
         }
         
@@ -47,13 +47,13 @@ internal extension UIScrollView {
             return
         }
         
-        guard self.isKind(of: UITableView.classForCoder()) else {
-            return
+        if self is UITableView {
+            
+            swizzleMethod(#selector(UITableView.endUpdates), swizzledSelector: #selector(UIScrollView.dzn_endUpdates))
+            
+            Static.isSwizzleEndUpdates = true
+            
         }
-        
-        swizzleMethod(#selector(UITableView.endUpdates), swizzledSelector: #selector(UIScrollView.dzn_endUpdates))
-        
-        Static.isSwizzleEndUpdates = true
         
         
     }
@@ -76,97 +76,100 @@ internal extension UIScrollView {
     
     func dzn_reloadData() {
         
-        self.dzn_reloadData()
-        self.dzn_reloadEmptyDataSet()
+        dzn_reloadData()
+        dzn_reloadEmptyDataSet()
         
     }
     
     func dzn_endUpdates() {
         
-        self.dzn_endUpdates()
-        self.dzn_reloadEmptyDataSet()
+        dzn_endUpdates()
+        dzn_reloadEmptyDataSet()
         
     }
     
     func reloadEmptyDataSet() {
         
-        self.dzn_reloadEmptyDataSet()
+        dzn_reloadEmptyDataSet()
         
     }
     
 
     func dzn_reloadEmptyDataSet() {
         
-        guard self.dzn_canDisplay() else {
+        guard dzn_canDisplay() else {
             return
         }
         
-        if (self.dzn_emptyDelegate?.shouldDisplay?(emptyView: self) ?? true && self.dzn_itemsCount == 0) ||
-            self.dzn_emptyDelegate?.shouldBeForcedToDisplay?(emptyView: self) ?? false {
+        if (dzn_emptyDelegate?.shouldDisplay?(emptyView: self) ?? true && dzn_itemsCount == 0) ||
+            dzn_emptyDelegate?.shouldBeForcedToDisplay?(emptyView: self) ?? false {
             
-            self.dzn_emptyDelegate?.willAppear?(emptyView: self)
+            dzn_emptyDelegate?.willAppear?(emptyView: self)
             
-            guard let view = self.emptyView else {
+            guard let view = emptyView else {
                 return
             }
             
             if view.superview == nil {
                 
-                if (self.isKind(of: UITableView.classForCoder()) || self.isKind(of: UICollectionView.classForCoder())) && self.subviews.count > 1 {
-                    self.insertSubview(view, at: 0)
+                if (self is UITableView || self is UICollectionView) && self.subviews.count > 1 {
+                    insertSubview(view, at: 0)
                 } else {
-                    self.addSubview(view)
+                    addSubview(view)
                 }
             }
             
             view.prepareForReuse();
             
-            if let customView = self.dzn_emptyDataSource?.customView?(emptyView: self) {
+            if let customView = dzn_emptyDataSource?.customView?(emptyView: self) {
                 
                 view.customView = customView
                 
             } else {
                 
-                view.titleLable.attributedText = self.dzn_emptyDataSource?.title?(emptyView: self)
-                view.detailLabel.attributedText = self.dzn_emptyDataSource?.description?(emptyView: self)
+                view.titleLable.attributedText = dzn_emptyDataSource?.title?(emptyView: self)
+                view.detailLabel.attributedText = dzn_emptyDataSource?.description?(emptyView: self)
                 
-                if let buttonImage = self.dzn_emptyDataSource?.buttonImage?(emptyView: self, state: UIControlState()) {
+                if let buttonImage = dzn_emptyDataSource?.buttonImage?(emptyView: self, state: .normal) {
                     
                     view.button.setImage(buttonImage)
-                    view.button.setImage(self.dzn_emptyDataSource?.buttonImage?(emptyView: self, state: .highlighted), for: .highlighted)
+                    view.button.setImage(dzn_emptyDataSource?.buttonImage?(emptyView: self, state: .highlighted), for: .highlighted)
                     
                 }
                 
-                let imageTintColor = self.dzn_emptyDataSource?.imageTintColor?(emptyView: self)
+                let imageTintColor = dzn_emptyDataSource?.imageTintColor?(emptyView: self)
                 let renderingMode = imageTintColor != nil ? UIImageRenderingMode.alwaysTemplate : UIImageRenderingMode.alwaysOriginal
-                view.verticalSpace = self.dzn_emptyDataSource?.spaceHeight?(emptyView: self) ?? 0
+                view.verticalSpace = dzn_emptyDataSource?.spaceHeight?(emptyView: self) ?? 0
                 
                 
-                if let image = self.dzn_emptyDataSource?.image?(emptyView: self) {
+                let _image: UIImage? = dzn_emptyDataSource?.image?(emptyView: self) ?? self.emptyImage
+                
+                
+                if let image = _image {
                     
                     view.imageView.image = image.withRenderingMode(renderingMode)
                     view.imageView.tintColor = imageTintColor
                     
                 }
                 
-                let buttonTitle = self.dzn_emptyDataSource?.buttonTitle?(emptyView: self, state: .normal)
+                let buttonTitle = dzn_emptyDataSource?.buttonTitle?(emptyView: self, state: .normal)
                 
                 view.button.setAttributedTitle(buttonTitle, for: .normal)
-                view.button.setAttributedTitle(self.dzn_emptyDataSource?.buttonTitle?(emptyView: self, state: .highlighted), for: .highlighted)
-                view.button.setBackgroundImage(self.dzn_emptyDataSource?.buttonBackgroundImage?(emptyView: self, forState: .normal), for: .normal)
-                view.button.setBackgroundImage(self.dzn_emptyDataSource?.buttonBackgroundImage?(emptyView: self, forState: .highlighted), for: .highlighted)
+                view.button.setAttributedTitle(dzn_emptyDataSource?.buttonTitle?(emptyView: self, state: .highlighted), for: .highlighted)
+                view.button.setBackgroundImage(dzn_emptyDataSource?.buttonBackgroundImage?(emptyView: self, forState: .normal), for: .normal)
+                view.button.setBackgroundImage(dzn_emptyDataSource?.buttonBackgroundImage?(emptyView: self, forState: .highlighted), for: .highlighted)
                 
                 
-                view.verticalOffset = self.dzn_emptyDataSource?.verticalOffset?(emptyView: self) ?? 0
+                view.verticalOffset = dzn_emptyDataSource?.verticalOffset?(emptyView: self) ?? 0
                 
-                view.backgroundColor = self.dzn_emptyDataSource?.backgroundColor?(emptyView: self)
+                view.backgroundColor = dzn_emptyDataSource?.backgroundColor?(emptyView: self)
                 view.isHidden = false
                 view.clipsToBounds = false
                 
                 // 配置可被点击
-                view.isUserInteractionEnabled = self.dzn_emptyDelegate?.shouldAllowTouch?(emptyView: self) ?? true
+                view.isUserInteractionEnabled = dzn_emptyDelegate?.shouldAllowTouch?(emptyView: self) ?? true
                 
-                view.fadeInOnDisplay = self.dzn_emptyDelegate?.shouldFadeIn?(emptyView: self) ?? true
+                view.fadeInOnDisplay = dzn_emptyDelegate?.shouldFadeIn?(emptyView: self) ?? true
                 
                 view.setupConstraints()
                 
@@ -174,25 +177,25 @@ internal extension UIScrollView {
                     view.layoutIfNeeded()
                 }
                 
-                self.isScrollEnabled = self.dzn_emptyDelegate?.shouldAllowScroll?(emptyView: self) ?? true
+                isScrollEnabled = dzn_emptyDelegate?.shouldAllowScroll?(emptyView: self) ?? true
                 
-                if self.dzn_emptyDelegate?.shouldAnimateImageView?(emptyView: self) ?? false {
+                if dzn_emptyDelegate?.shouldAnimateImageView?(emptyView: self) ?? false {
                     
-                    if let animation = self.dzn_emptyDataSource?.imageAnimation?(emptyView: self) {
-                        self.emptyView?.imageView.layer.add(animation, forKey: kEmptyImageViewAnimationKey)
+                    if let animation = dzn_emptyDataSource?.imageAnimation?(emptyView: self) {
+                        emptyView?.imageView.layer.add(animation, forKey: kEmptyImageViewAnimationKey)
                     }
                     
-                } else if let _ = self.emptyView?.imageView.layer.animation(forKey: kEmptyImageViewAnimationKey) {
-                    self.emptyView?.imageView.layer.removeAnimation(forKey: kEmptyImageViewAnimationKey)
+                } else if let _ = emptyView?.imageView.layer.animation(forKey: kEmptyImageViewAnimationKey) {
+                    emptyView?.imageView.layer.removeAnimation(forKey: kEmptyImageViewAnimationKey)
                 }
                 
                 
-                self.dzn_emptyDelegate?.didAppear?(emptyView: self)
+                dzn_emptyDelegate?.didAppear?(emptyView: self)
                 
             }
             
-        } else if self.emptyView?.isHidden ?? false {
-            self.dzn_invalidate()
+        } else if emptyView?.isHidden ?? false {
+            dzn_invalidate()
         }
         
     }

@@ -11,7 +11,7 @@ import UIKit
 internal extension UIButton {
     
     func setImage(_ image: UIImage?) {
-        self.setImage(image, for: .normal)
+        setImage(image, for: .normal)
     }
     
 }

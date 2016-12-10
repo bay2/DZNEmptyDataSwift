@@ -19,7 +19,7 @@ extension UIScrollView {
     /** 
     空数据显现数据代理对象
     */
-    @IBOutlet weak public var dzn_emptyDataSource: EmptyDataSource?  {
+    weak public var dzn_emptyDataSource: EmptyDataSource?  {
         get {
             return objc_getAssociatedObject(self, &kEmptyDataSetSource) as? EmptyDataSource
         }
@@ -39,7 +39,7 @@ extension UIScrollView {
     /**
      空数据显现代理对象
      */
-    @IBOutlet weak public var dzn_emptyDelegate: EmptyDelegate? {
+    weak public var dzn_emptyDelegate: EmptyDelegate? {
         
         get {
             return objc_getAssociatedObject(self, &kEmptyDelegate) as? EmptyDelegate
@@ -52,17 +52,6 @@ extension UIScrollView {
             
             objc_setAssociatedObject(self, &kEmptyDelegate, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             
-        }
-        
-    }
-    
-    @IBInspectable public var emptyImage: UIImage? {
-        
-        get {
-            return objc_getAssociatedObject(self, &kEmptyImage) as? UIImage
-        }
-        set(newValue) {
-            objc_setAssociatedObject(self, &kEmptyImage, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
         
     }
@@ -82,15 +71,15 @@ extension UIScrollView {
 
 extension UIScrollView: UIGestureRecognizerDelegate {
     
-    var emptyView: DZNEmptyDataSetView? {
+    var emptyView: EmptyDataSetView? {
         
         get {
             
-            if let view = objc_getAssociatedObject(self, &kEmptyDataSetView) as? DZNEmptyDataSetView {
+            if let view = objc_getAssociatedObject(self, &kEmptyDataSetView) as? EmptyDataSetView {
                 return view
             }
             
-            let view = DZNEmptyDataSetView()
+            let view = EmptyDataSetView()
             view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleHeight.rawValue|UIViewAutoresizing.flexibleWidth.rawValue)
             view.isHidden = true
             view.tapGesture = UITapGestureRecognizer(target: self, action: #selector(UIScrollView.dzn_didTapContentView))
@@ -191,14 +180,14 @@ extension UIScrollView: UIGestureRecognizerDelegate {
     */
     func dzn_invalidate() {
         
-        dzn_emptyDelegate?.didAppear?(emptyView: self)
+        dzn_emptyDelegate?.didAppear(emptyView: self)
         emptyView?.prepareForReuse()
         emptyView?.removeFromSuperview()
         emptyView = nil
         
         isScrollEnabled = true
         
-        dzn_emptyDelegate?.didDisappear?(emptyView: self)
+        dzn_emptyDelegate?.didDisappear(emptyView: self)
         
         
     }
@@ -226,7 +215,7 @@ extension UIScrollView: UIGestureRecognizerDelegate {
     
     func dzn_didTapDataButton(_ sender: UIButton) {
         
-        dzn_emptyDelegate?.didTap?(emptyView: self, view: sender)
+        dzn_emptyDelegate?.didTap(emptyView: self, view: sender)
         
     }
     
@@ -236,7 +225,7 @@ extension UIScrollView: UIGestureRecognizerDelegate {
             return
         }
         
-        dzn_emptyDelegate?.didTap?(emptyView: self, view: view)
+        dzn_emptyDelegate?.didTap(emptyView: self, view: view)
     }
     
 }

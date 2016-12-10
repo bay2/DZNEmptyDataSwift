@@ -88,12 +88,6 @@ internal extension UIScrollView {
         
     }
     
-    func reloadEmptyDataSet() {
-        
-        dzn_reloadEmptyDataSet()
-        
-    }
-    
 
     func dzn_reloadEmptyDataSet() {
         
@@ -101,10 +95,10 @@ internal extension UIScrollView {
             return
         }
         
-        if (dzn_emptyDelegate?.shouldDisplay?(emptyView: self) ?? true && dzn_itemsCount == 0) ||
-            dzn_emptyDelegate?.shouldBeForcedToDisplay?(emptyView: self) ?? false {
+        if (dzn_emptyDelegate?.shouldDisplay(emptyView: self) ?? true && dzn_itemsCount == 0) ||
+            dzn_emptyDelegate?.shouldBeForcedToDisplay(emptyView: self) ?? false {
             
-            dzn_emptyDelegate?.willAppear?(emptyView: self)
+            dzn_emptyDelegate?.willAppear(emptyView: self)
             
             guard let view = emptyView else {
                 return
@@ -119,9 +113,9 @@ internal extension UIScrollView {
                 }
             }
             
-            view.prepareForReuse();
+            view.prepareForReuse()
             
-            let customView = dzn_emptyDataSource?.customView?(emptyView: self) ?? self.userCostomEmptyView
+            let customView = dzn_emptyDataSource?.customView(emptyView: self) ?? self.userCostomEmptyView
             
             if let customView = customView {
                 
@@ -131,53 +125,49 @@ internal extension UIScrollView {
                 
             } else {
                 
-                view.titleLable.attributedText = dzn_emptyDataSource?.title?(emptyView: self)
-                view.detailLabel.attributedText = dzn_emptyDataSource?.description?(emptyView: self)
+                view.titleLable.attributedText = dzn_emptyDataSource?.title(emptyView: self)
+                view.detailLabel.attributedText = dzn_emptyDataSource?.description(emptyView: self)
                 
-                if let buttonImage = dzn_emptyDataSource?.buttonImage?(emptyView: self, state: .normal) {
+                if let buttonImage = dzn_emptyDataSource?.buttonImage(emptyView: self, state: .normal) {
                     
-                    view.button.setImage(buttonImage)
-                    view.button.setImage(dzn_emptyDataSource?.buttonImage?(emptyView: self, state: .highlighted), for: .highlighted)
+                    view.button.setImage(buttonImage, for: .normal)
+                    view.button.setImage(dzn_emptyDataSource?.buttonImage(emptyView: self, state: .highlighted), for: .highlighted)
                     
                 }
                 
-                let imageTintColor = dzn_emptyDataSource?.imageTintColor?(emptyView: self)
+                let imageTintColor = dzn_emptyDataSource?.imageTintColor(emptyView: self)
                 let renderingMode = imageTintColor != nil ? UIImageRenderingMode.alwaysTemplate : UIImageRenderingMode.alwaysOriginal
-                view.verticalSpace = dzn_emptyDataSource?.spaceHeight?(emptyView: self) ?? 0
+                view.verticalSpace = dzn_emptyDataSource?.spaceHeight(emptyView: self) ?? 0
                 
-                
-                let _image: UIImage? = dzn_emptyDataSource?.image?(emptyView: self) ?? self.emptyImage
-                
-                
-                if let image = _image {
+                if let image = dzn_emptyDataSource?.image(emptyView: self)  {
                     
                     view.imageView.image = image.withRenderingMode(renderingMode)
                     view.imageView.tintColor = imageTintColor
                     
                 }
                 
-                let buttonTitle = dzn_emptyDataSource?.buttonTitle?(emptyView: self, state: .normal)
+                let buttonTitle = dzn_emptyDataSource?.buttonTitle(emptyView: self, state: .normal)
                 
                 view.button.setAttributedTitle(buttonTitle, for: .normal)
-                view.button.setAttributedTitle(dzn_emptyDataSource?.buttonTitle?(emptyView: self, state: .highlighted), for: .highlighted)
-                view.button.setBackgroundImage(dzn_emptyDataSource?.buttonBackgroundImage?(emptyView: self, forState: .normal), for: .normal)
-                view.button.setBackgroundImage(dzn_emptyDataSource?.buttonBackgroundImage?(emptyView: self, forState: .highlighted), for: .highlighted)
+                view.button.setAttributedTitle(dzn_emptyDataSource?.buttonTitle(emptyView: self, state: .highlighted), for: .highlighted)
+                view.button.setBackgroundImage(dzn_emptyDataSource?.buttonBackgroundImage(emptyView: self, forState: .normal), for: .normal)
+                view.button.setBackgroundImage(dzn_emptyDataSource?.buttonBackgroundImage(emptyView: self, forState: .highlighted), for: .highlighted)
                 
                 
                 
                 
             }
             
-            view.verticalOffset = dzn_emptyDataSource?.verticalOffset?(emptyView: self) ?? 0
+            view.verticalOffset = dzn_emptyDataSource?.verticalOffset(emptyView: self) ?? 0
             
-            view.backgroundColor = dzn_emptyDataSource?.backgroundColor?(emptyView: self)
+            view.backgroundColor = dzn_emptyDataSource?.backgroundColor(emptyView: self)
             view.isHidden = false
             view.clipsToBounds = false
             
             // 配置可被点击
-            view.isUserInteractionEnabled = dzn_emptyDelegate?.shouldAllowTouch?(emptyView: self) ?? true
+            view.isUserInteractionEnabled = dzn_emptyDelegate?.shouldAllowTouch(emptyView: self) ?? true
             
-            view.fadeInOnDisplay = dzn_emptyDelegate?.shouldFadeIn?(emptyView: self) ?? true
+            view.fadeInOnDisplay = dzn_emptyDelegate?.shouldFadeIn(emptyView: self) ?? true
             
             view.setupConstraints()
             
@@ -185,11 +175,11 @@ internal extension UIScrollView {
                 view.layoutIfNeeded()
             }
             
-            isScrollEnabled = dzn_emptyDelegate?.shouldAllowScroll?(emptyView: self) ?? true
+            isScrollEnabled = dzn_emptyDelegate?.shouldAllowScroll(emptyView: self) ?? true
             
-            if dzn_emptyDelegate?.shouldAnimateImageView?(emptyView: self) ?? false {
+            if dzn_emptyDelegate?.shouldAnimateImageView(emptyView: self) ?? false {
                 
-                if let animation = dzn_emptyDataSource?.imageAnimation?(emptyView: self) {
+                if let animation = dzn_emptyDataSource?.imageAnimation(emptyView: self) {
                     emptyView?.imageView.layer.add(animation, forKey: kEmptyImageViewAnimationKey)
                 }
                 
@@ -198,7 +188,7 @@ internal extension UIScrollView {
             }
             
             
-            dzn_emptyDelegate?.didAppear?(emptyView: self)
+            dzn_emptyDelegate?.didAppear(emptyView: self)
             
         } else if emptyView?.isHidden ?? false {
             dzn_invalidate()

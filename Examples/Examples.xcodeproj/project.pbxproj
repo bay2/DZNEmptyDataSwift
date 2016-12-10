@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		910B9CE21DEB1F7E0086F4C9 /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910B9CE11DEB1F7E0086F4C9 /* AssociatedObject.swift */; };
+		910B9CE41DEB20140086F4C9 /* SwizzleMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910B9CE31DEB20140086F4C9 /* SwizzleMethod.swift */; };
+		910B9CE61DEB206A0086F4C9 /* EmptyDataShowViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910B9CE51DEB206A0086F4C9 /* EmptyDataShowViewable.swift */; };
+		910B9CE81DEB2B310086F4C9 /* EmptyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910B9CE71DEB2B310086F4C9 /* EmptyDelegate.swift */; };
 		91279A041DE1CCE00068EEC1 /* IBTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91279A031DE1CCE00068EEC1 /* IBTableViewController.swift */; };
+		91279A081DEB008A0068EEC1 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91279A071DEB008A0068EEC1 /* Then.swift */; };
+		91279A0A1DEB01F10068EEC1 /* EmptyDataSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91279A091DEB01F10068EEC1 /* EmptyDataSetView.swift */; };
 		913491951D39B07A00C64978 /* applications.json in Resources */ = {isa = PBXBuildFile; fileRef = 913491941D39B07A00C64978 /* applications.json */; };
 		913491971D3A3D2600C64978 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913491961D3A3D2600C64978 /* Application.swift */; };
-		917E84871D4329B7002E55FB /* DZNEmptyDataSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917E847F1D4329B7002E55FB /* DZNEmptyDataSetView.swift */; };
 		917E84881D4329B7002E55FB /* EmptyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917E84811D4329B7002E55FB /* EmptyDataSource.swift */; };
 		917E84891D4329B7002E55FB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 917E84821D4329B7002E55FB /* Info.plist */; };
 		917E848A1D4329B7002E55FB /* Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917E84831D4329B7002E55FB /* Swizzling.swift */; };
-		917E848B1D4329B7002E55FB /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917E84841D4329B7002E55FB /* UIKitExtension.swift */; };
 		917E848C1D4329B7002E55FB /* UIScrollViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917E84851D4329B7002E55FB /* UIScrollViewEx.swift */; };
 		917E848D1D4329B7002E55FB /* UIView+DZNConstraintBasedLayoutExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917E84861D4329B7002E55FB /* UIView+DZNConstraintBasedLayoutExtensions.swift */; };
 		91D764471D350CCC009C7C54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D764461D350CCC009C7C54 /* AppDelegate.swift */; };
@@ -28,15 +32,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		910B9CE11DEB1F7E0086F4C9 /* AssociatedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociatedObject.swift; sourceTree = "<group>"; };
+		910B9CE31DEB20140086F4C9 /* SwizzleMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwizzleMethod.swift; sourceTree = "<group>"; };
+		910B9CE51DEB206A0086F4C9 /* EmptyDataShowViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyDataShowViewable.swift; sourceTree = "<group>"; };
+		910B9CE71DEB2B310086F4C9 /* EmptyDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyDelegate.swift; sourceTree = "<group>"; };
 		91279A031DE1CCE00068EEC1 /* IBTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBTableViewController.swift; sourceTree = "<group>"; };
+		91279A071DEB008A0068EEC1 /* Then.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
+		91279A091DEB01F10068EEC1 /* EmptyDataSetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyDataSetView.swift; sourceTree = "<group>"; };
 		913491941D39B07A00C64978 /* applications.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = applications.json; sourceTree = "<group>"; };
 		913491961D3A3D2600C64978 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
-		917E847F1D4329B7002E55FB /* DZNEmptyDataSetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DZNEmptyDataSetView.swift; sourceTree = "<group>"; };
 		917E84801D4329B7002E55FB /* DZNEmptyDataSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZNEmptyDataSwift.h; sourceTree = "<group>"; };
 		917E84811D4329B7002E55FB /* EmptyDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyDataSource.swift; sourceTree = "<group>"; };
 		917E84821D4329B7002E55FB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		917E84831D4329B7002E55FB /* Swizzling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swizzling.swift; sourceTree = "<group>"; };
-		917E84841D4329B7002E55FB /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
 		917E84851D4329B7002E55FB /* UIScrollViewEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewEx.swift; sourceTree = "<group>"; };
 		917E84861D4329B7002E55FB /* UIView+DZNConstraintBasedLayoutExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+DZNConstraintBasedLayoutExtensions.swift"; sourceTree = "<group>"; };
 		91D764431D350CCC009C7C54 /* Examples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Examples.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,14 +73,18 @@
 		917E847E1D4329B7002E55FB /* DZNEmptyDataSwift */ = {
 			isa = PBXGroup;
 			children = (
-				917E847F1D4329B7002E55FB /* DZNEmptyDataSetView.swift */,
 				917E84801D4329B7002E55FB /* DZNEmptyDataSwift.h */,
 				917E84811D4329B7002E55FB /* EmptyDataSource.swift */,
 				917E84821D4329B7002E55FB /* Info.plist */,
 				917E84831D4329B7002E55FB /* Swizzling.swift */,
-				917E84841D4329B7002E55FB /* UIKitExtension.swift */,
 				917E84851D4329B7002E55FB /* UIScrollViewEx.swift */,
 				917E84861D4329B7002E55FB /* UIView+DZNConstraintBasedLayoutExtensions.swift */,
+				91279A071DEB008A0068EEC1 /* Then.swift */,
+				91279A091DEB01F10068EEC1 /* EmptyDataSetView.swift */,
+				910B9CE11DEB1F7E0086F4C9 /* AssociatedObject.swift */,
+				910B9CE31DEB20140086F4C9 /* SwizzleMethod.swift */,
+				910B9CE51DEB206A0086F4C9 /* EmptyDataShowViewable.swift */,
+				910B9CE71DEB2B310086F4C9 /* EmptyDelegate.swift */,
 			);
 			name = DZNEmptyDataSwift;
 			path = ../DZNEmptyDataSwift;
@@ -214,15 +226,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				910B9CE41DEB20140086F4C9 /* SwizzleMethod.swift in Sources */,
+				910B9CE61DEB206A0086F4C9 /* EmptyDataShowViewable.swift in Sources */,
 				917E848D1D4329B7002E55FB /* UIView+DZNConstraintBasedLayoutExtensions.swift in Sources */,
 				913491971D3A3D2600C64978 /* Application.swift in Sources */,
-				917E84871D4329B7002E55FB /* DZNEmptyDataSetView.swift in Sources */,
 				91279A041DE1CCE00068EEC1 /* IBTableViewController.swift in Sources */,
-				917E848B1D4329B7002E55FB /* UIKitExtension.swift in Sources */,
+				91279A081DEB008A0068EEC1 /* Then.swift in Sources */,
+				910B9CE81DEB2B310086F4C9 /* EmptyDelegate.swift in Sources */,
+				910B9CE21DEB1F7E0086F4C9 /* AssociatedObject.swift in Sources */,
 				91D7644B1D350CCC009C7C54 /* DetailViewController.swift in Sources */,
 				91D764491D350CCC009C7C54 /* MasterViewController.swift in Sources */,
 				917E848C1D4329B7002E55FB /* UIScrollViewEx.swift in Sources */,
 				917E848A1D4329B7002E55FB /* Swizzling.swift in Sources */,
+				91279A0A1DEB01F10068EEC1 /* EmptyDataSetView.swift in Sources */,
 				917E84881D4329B7002E55FB /* EmptyDataSource.swift in Sources */,
 				91D764471D350CCC009C7C54 /* AppDelegate.swift in Sources */,
 			);

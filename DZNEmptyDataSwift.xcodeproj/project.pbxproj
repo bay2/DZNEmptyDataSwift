@@ -8,24 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		917E84781D4328EF002E55FB /* DZNEmptyDataSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 917E84761D4328EF002E55FB /* DZNEmptyDataSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		91F395F51D434A01005E5DAB /* DZNEmptyDataSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F395EF1D434A01005E5DAB /* DZNEmptyDataSetView.swift */; };
 		91F395F61D434A01005E5DAB /* Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F395F01D434A01005E5DAB /* Swizzling.swift */; };
 		91F395F71D434A01005E5DAB /* UIScrollViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F395F11D434A01005E5DAB /* UIScrollViewEx.swift */; };
 		91F395F81D434A01005E5DAB /* EmptyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F395F21D434A01005E5DAB /* EmptyDataSource.swift */; };
-		91F395F91D434A01005E5DAB /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F395F31D434A01005E5DAB /* UIKitExtension.swift */; };
 		91F395FA1D434A01005E5DAB /* UIView+DZNConstraintBasedLayoutExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F395F41D434A01005E5DAB /* UIView+DZNConstraintBasedLayoutExtensions.swift */; };
+		91FFC71A1DFED18C001FDCA3 /* EmptyDataSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FFC7141DFED18C001FDCA3 /* EmptyDataSetView.swift */; };
+		91FFC71B1DFED18C001FDCA3 /* EmptyDataShowViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FFC7151DFED18C001FDCA3 /* EmptyDataShowViewable.swift */; };
+		91FFC71C1DFED18C001FDCA3 /* EmptyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FFC7161DFED18C001FDCA3 /* EmptyDelegate.swift */; };
+		91FFC71D1DFED18C001FDCA3 /* SwizzleMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FFC7171DFED18C001FDCA3 /* SwizzleMethod.swift */; };
+		91FFC71E1DFED18C001FDCA3 /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FFC7181DFED18C001FDCA3 /* AssociatedObject.swift */; };
+		91FFC71F1DFED18C001FDCA3 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FFC7191DFED18C001FDCA3 /* Then.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		917E84731D4328EF002E55FB /* DZNEmptyDataSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DZNEmptyDataSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		917E84761D4328EF002E55FB /* DZNEmptyDataSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZNEmptyDataSwift.h; sourceTree = "<group>"; };
 		917E84771D4328EF002E55FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		91F395EF1D434A01005E5DAB /* DZNEmptyDataSetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DZNEmptyDataSetView.swift; sourceTree = "<group>"; };
 		91F395F01D434A01005E5DAB /* Swizzling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swizzling.swift; sourceTree = "<group>"; };
 		91F395F11D434A01005E5DAB /* UIScrollViewEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewEx.swift; sourceTree = "<group>"; };
 		91F395F21D434A01005E5DAB /* EmptyDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyDataSource.swift; sourceTree = "<group>"; };
-		91F395F31D434A01005E5DAB /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
 		91F395F41D434A01005E5DAB /* UIView+DZNConstraintBasedLayoutExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+DZNConstraintBasedLayoutExtensions.swift"; sourceTree = "<group>"; };
+		91FFC7141DFED18C001FDCA3 /* EmptyDataSetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyDataSetView.swift; path = DZNEmptyDataSwift/EmptyDataSetView.swift; sourceTree = "<group>"; };
+		91FFC7151DFED18C001FDCA3 /* EmptyDataShowViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyDataShowViewable.swift; path = DZNEmptyDataSwift/EmptyDataShowViewable.swift; sourceTree = "<group>"; };
+		91FFC7161DFED18C001FDCA3 /* EmptyDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyDelegate.swift; path = DZNEmptyDataSwift/EmptyDelegate.swift; sourceTree = "<group>"; };
+		91FFC7171DFED18C001FDCA3 /* SwizzleMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwizzleMethod.swift; path = DZNEmptyDataSwift/SwizzleMethod.swift; sourceTree = "<group>"; };
+		91FFC7181DFED18C001FDCA3 /* AssociatedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssociatedObject.swift; path = DZNEmptyDataSwift/AssociatedObject.swift; sourceTree = "<group>"; };
+		91FFC7191DFED18C001FDCA3 /* Then.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Then.swift; path = DZNEmptyDataSwift/Then.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +50,12 @@
 		917E84691D4328EF002E55FB = {
 			isa = PBXGroup;
 			children = (
+				91FFC7141DFED18C001FDCA3 /* EmptyDataSetView.swift */,
+				91FFC7151DFED18C001FDCA3 /* EmptyDataShowViewable.swift */,
+				91FFC7161DFED18C001FDCA3 /* EmptyDelegate.swift */,
+				91FFC7171DFED18C001FDCA3 /* SwizzleMethod.swift */,
+				91FFC7181DFED18C001FDCA3 /* AssociatedObject.swift */,
+				91FFC7191DFED18C001FDCA3 /* Then.swift */,
 				917E84751D4328EF002E55FB /* DZNEmptyDataSwift */,
 				917E84741D4328EF002E55FB /* Products */,
 			);
@@ -58,11 +72,9 @@
 		917E84751D4328EF002E55FB /* DZNEmptyDataSwift */ = {
 			isa = PBXGroup;
 			children = (
-				91F395EF1D434A01005E5DAB /* DZNEmptyDataSetView.swift */,
 				91F395F01D434A01005E5DAB /* Swizzling.swift */,
 				91F395F11D434A01005E5DAB /* UIScrollViewEx.swift */,
 				91F395F21D434A01005E5DAB /* EmptyDataSource.swift */,
-				91F395F31D434A01005E5DAB /* UIKitExtension.swift */,
 				91F395F41D434A01005E5DAB /* UIView+DZNConstraintBasedLayoutExtensions.swift */,
 				917E84761D4328EF002E55FB /* DZNEmptyDataSwift.h */,
 				917E84771D4328EF002E55FB /* Info.plist */,
@@ -153,11 +165,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				91F395FA1D434A01005E5DAB /* UIView+DZNConstraintBasedLayoutExtensions.swift in Sources */,
-				91F395F51D434A01005E5DAB /* DZNEmptyDataSetView.swift in Sources */,
+				91FFC71B1DFED18C001FDCA3 /* EmptyDataShowViewable.swift in Sources */,
+				91FFC71C1DFED18C001FDCA3 /* EmptyDelegate.swift in Sources */,
 				91F395F61D434A01005E5DAB /* Swizzling.swift in Sources */,
+				91FFC71A1DFED18C001FDCA3 /* EmptyDataSetView.swift in Sources */,
 				91F395F81D434A01005E5DAB /* EmptyDataSource.swift in Sources */,
-				91F395F91D434A01005E5DAB /* UIKitExtension.swift in Sources */,
 				91F395F71D434A01005E5DAB /* UIScrollViewEx.swift in Sources */,
+				91FFC71E1DFED18C001FDCA3 /* AssociatedObject.swift in Sources */,
+				91FFC71F1DFED18C001FDCA3 /* Then.swift in Sources */,
+				91FFC71D1DFED18C001FDCA3 /* SwizzleMethod.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

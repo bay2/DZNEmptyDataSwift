@@ -15,7 +15,7 @@ $ brew install carthage
 在 `Cartfile` 文件中添加
 
 ```
-github "bay2/DZNEmptyDataSwift" ~> 0.2.0
+github "bay2/DZNEmptyDataSwift" ~> 0.3.0
 ```
 
 执行 `carthage update --verbose  --platform iOS  --no-use-binaries  --color auto` 命令

@@ -137,6 +137,7 @@ internal extension UIScrollView {
                 
                 let imageTintColor = dzn_emptyDataSource?.imageTintColor(emptyView: self)
                 let renderingMode = imageTintColor != nil ? UIImageRenderingMode.alwaysTemplate : UIImageRenderingMode.alwaysOriginal
+                
                 view.verticalSpace = dzn_emptyDataSource?.spaceHeight(emptyView: self) ?? 0
                 
                 if let image = dzn_emptyDataSource?.image(emptyView: self)  {
@@ -152,8 +153,6 @@ internal extension UIScrollView {
                 view.button.setAttributedTitle(dzn_emptyDataSource?.buttonTitle(emptyView: self, state: .highlighted), for: .highlighted)
                 view.button.setBackgroundImage(dzn_emptyDataSource?.buttonBackgroundImage(emptyView: self, forState: .normal), for: .normal)
                 view.button.setBackgroundImage(dzn_emptyDataSource?.buttonBackgroundImage(emptyView: self, forState: .highlighted), for: .highlighted)
-                
-                
                 
                 
             }

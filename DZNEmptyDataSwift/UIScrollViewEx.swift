@@ -25,7 +25,7 @@ extension UIScrollView {
         }
         set(newValue) {
             
-            objc_setAssociatedObject(self, &kEmptyDataSetSource, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &kEmptyDataSetSource, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
             
             if newValue == nil || !dzn_canDisplay() {
                 dzn_invalidate()
@@ -50,7 +50,7 @@ extension UIScrollView {
                 dzn_invalidate()
             }
             
-            objc_setAssociatedObject(self, &kEmptyDelegate, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &kEmptyDelegate, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
             
         }
         
